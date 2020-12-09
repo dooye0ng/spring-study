@@ -1,31 +1,21 @@
 package hello.hellospring.service;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.repository.MemberRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-@SuppressWarnings("ALL")
-class MemberServiceTest {
-	
-	MemberService service;
-	MemoryMemberRepository repository;
-	
-	@BeforeEach
-	void beforeEach() {
-		repository = new MemoryMemberRepository();
-		service = new MemberService(repository);
-	}
-	
-	@AfterEach
-	void afterEach() {
-		repository.clearStore();
-	}
+@SpringBootTest
+@Transactional
+public class MemberServiceIntegrationService {
+	@Autowired MemberService service;
+	@Autowired MemberRepository repository;
 	
 	@Test
 	void join() {
@@ -56,7 +46,7 @@ class MemberServiceTest {
 		service.join(member1);
 		service.join(member3);
 		IllegalStateException e = assertThrows(IllegalStateException.class, () -> service.join(member2));
-		assertThat(e.getMessage()).isEqualTo("�̹� �����ϴ� ȸ���Դϴ�.");
+		assertThat(e.getMessage()).isEqualTo("error.");
 		
 		
 	}
@@ -70,5 +60,4 @@ class MemberServiceTest {
 	void findOne() {
 		
 	}
-
 }

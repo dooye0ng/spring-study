@@ -3,6 +3,9 @@ package hello.hellospring.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
@@ -14,12 +17,12 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 	/**
-	 * È¸¿ø °¡ÀÔ
+	 * È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param member
 	 * @return
 	 */
 	public long join(Member member) {
-		// °°Àº ÀÌ¸§ÀÌ ÀÖ´Â Áßº¹ È¸¿ø X Á¶°Ç
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ßºï¿½ È¸ï¿½ï¿½ X ï¿½ï¿½ï¿½ï¿½
 		validateDuplicateMember(member);
 		memberRepository.save(member);
 		return member.getId();
@@ -28,11 +31,11 @@ public class MemberService {
 	private void validateDuplicateMember(Member member) {
 		memberRepository.findByName(member.getName())
 				.ifPresent(m->{
-					throw new IllegalStateException("ÀÌ¹Ì Á¸ÀçÇÏ´Â È¸¿øÀÔ´Ï´Ù.");
+					throw new IllegalStateException("error.");
 				});
 	}
 	/**
-	 * ÀüÃ¼ È¸¿ø Á¶È¸
+	 * ï¿½ï¿½Ã¼ È¸ï¿½ï¿½ ï¿½ï¿½È¸
 	 * @return
 	 */
 	public List<Member> findMembers() {
