@@ -1,5 +1,6 @@
 package com.luv2code.springdemo;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,5 +10,5 @@ public class RESTFortuneService implements FortuneService {
 	public String getFortune() {
 		return "REST Fortune";
 	}
-
+	
 }
