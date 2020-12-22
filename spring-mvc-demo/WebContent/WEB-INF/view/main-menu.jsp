@@ -6,6 +6,7 @@
 
 <body>
 	<h1>Hello World Home Page</h1>
-	<a href="showForm">Hello form</a>
+	<a href="hello/showForm">Hello Form</a>
+	<a href="student/showForm">Student Form</a>
 </body>
 </html>
