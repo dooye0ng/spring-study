@@ -40,11 +40,14 @@ public class ReadStudentDemo {
 
             System.out.println("Getting Student with id ... ");
 
-            List<Student> students = session.createQuery("from Student s where s.lastName = 'wall'",
+            List<Student> students1 = session.createQuery("from Student s where s.lastName = 'wall'",
                     Student.class).getResultList();
+            List<Student> students2 = session.createQuery("from Student s where s.email like '%@%'", Student.class)
+                    .getResultList();
 
             System.out.println("======================");
-            displayStudents(students);
+            displayStudents(students1);
+            displayStudents(students2);
 
             session.getTransaction().commit();
             System.out.println("Done !!!");
