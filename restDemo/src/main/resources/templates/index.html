@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h2>index</h2>
+<a th:href="${#httpServletRequest.contextPath} + '/test/hello'">Go Hello</a>
+</body>
+</html>
